@@ -1,21 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Glitch Screen</title>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0">
+
 <style>
-body{background;#000;color;#0f0;font-family:mon
-ospace;text-align:center;padding-top:30%}
-hi{animation:glitch .15s infinite}
-@keyframes glitch{
-0%{transform:translateX(0)}
-50%{transform:translateX(8px)}
-100%{transform:translateX(-8px)}
+*{
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #000;
+  color: #00ff66;
+  font-family: monospace;
+  height: 100vh;
+  display: flex;
+  jusrify- content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.phone {
+  width: 300px;
+  height: 600px;
+  border: 3px solid #00ff66;
+  border-radius: 30px;
+  padding: 25px 15px;
+  position: relative;
+  box-shadow: 0 0 25px #00ff66;
+  animation: shake 0.15s infinite;
+}
+
+.screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+}
+
+h1 {
+  font-size: 42px;
+  text-shadow:
+    3px 0 red,
+    -3px 0 cyan;
+  animation: glitch 0.25s infinite;
+}
+
+
+p {
+  font-size: 14px;
+}
+
+
+.bar {
+  width: 80%;
+  height: 8px;
+  border: 1px solid #00ff66;
+  margin-top: 20px;
+}
+
+.bar span {
+ display: block;
+ height: 100%;
+ background: #00ff66;
+ animation: loading 1.2s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-5px, -3px); }
+  40% { transform: translate(5px, -3px); }
+  60% { transform: translate(-3px, -2px); }
+  80% { transform: translate(4px, 2px); }
+  100% {transform: translate(0); }
+}
+
+@keyframes shake {
+  0% { transform: translate(0); }
+  50% { transform: translate(1px, -1px); }
+  100% { transform: translate(-1px, 1px); 
+}
+
+@keyframes loading {
+  0% { width: 0%; }
+  100% { width: 100%; 
 }
 </style>
 </head>
+
 <body>
-<h1> GLITCH</h1>
-<p>System visual simulators</p>
+
+<div class="phone">
+  <div class="screen">
+     <h1 id="glitchText">GLITCH</h1>
+     <p id="status">SYSTEM VISUAL SIMULATOR</p>
+
+     <div class="bar">
+       <span><span>
+     </div>
+
+     <p id="time"></p>
+   </div>
+</div>
+function updateTime() {
+  cons now = new Date()
+  document.getElementById("time").textContent =
+    now.toLocaleTimeString();
+
+}
+
+setInterval(updateTime, 1000);
+updateTime();
+
+const mwssages = [
+  "SYSTEM VISUAL SIMULATOR",
+  "SIGNAL UNSTABLE...",
+  "GLITCH DETECTED",
+  "SYSTEM ONLINE"
+];
+
+let i = 0;
+aetInterval(() => {
+  document.getElementById("status").textContent
+= messages[i];
+  i = (i + 1) % messages.length;
+}, 1000);
+</script>
+
+
 </body>
-</html
->	
+</html>
